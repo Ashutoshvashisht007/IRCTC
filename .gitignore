@@ -1,0 +1,37 @@
+### IntelliJ IDEA ###
+.idea/                    # IntelliJ project settings
+*.iml                     # Module files
+out/                      # Output directory
+workspace.xml             # Local IDE workspace
+
+### Gradle ###
+.gradle/                  # Gradle cache
+/build/                   # Compiled output (classes, JARs)
+!gradle/wrapper/gradle-wrapper.jar  # Keep Gradle Wrapper JAR
+.gradle-cache/            # Gradle caching
+
+### Logs and Temp Files ###
+*.log                     # Log files
+*.tmp                     # Temporary files
+*.bak                     # Backup files
+hs_err_pid*               # Java crash logs
+*.swp                     # Swap files
+
+### Java ###
+target/                   # Maven/Java output
+*.class                   # Compiled Java files
+
+### IDE Files (macOS, Windows, Linux) ###
+.DS_Store                 # macOS Finder metadata
+Thumbs.db                 # Windows thumbnail cache
+*.~                       # Editor backup files
+
+### Environment Files ###
+.env                      # Environment variables (e.g., secrets)
+.vscode/                  # VSCode settings (if used)
+
+### Specific to Java Backend Projects ###
+/logs/                    # Application logs
+*.war                     # Web application archives
+*.jar                     # Java archives
+/local.properties         # Local settings (e.g., DB credentials)

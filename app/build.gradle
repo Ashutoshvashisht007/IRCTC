@@ -19,6 +19,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     implementation 'com.google.guava:guava:32.1.2-jre'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
+    implementation 'org.mindrot:jbcrypt:0.4'
 }
 
 

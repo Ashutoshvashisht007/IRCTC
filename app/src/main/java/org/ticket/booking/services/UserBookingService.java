@@ -2,6 +2,7 @@ package org.ticket.booking.services;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.ticket.booking.entities.Ticket;
+import org.ticket.booking.entities.Train;
 import org.ticket.booking.entities.User;
 import org.ticket.booking.utils.UserServiceUtil;
 
@@ -18,10 +19,18 @@ public class UserBookingService {
     private ObjectMapper objectMapper = new ObjectMapper(); // to serialize or deserialize
     private static final String USER_PATH = "app/src/main/java/org/ticket/booking/localDB/users.json";
 
+    public  UserBookingService() throws IOException{
+        loadUsers();
+    }
+
+    public  List<User> loadUsers() throws IOException{
+        File users = new File(USER_PATH);
+        return userList = objectMapper.readValue(users, new TypeReference<List<User>>() {}); // to deserialzie generics on the runtime we use TypeReference.
+    }
+
     public UserBookingService(User user) throws IOException {
         this.user = user;
-        File users = new File(USER_PATH);
-        userList = objectMapper.readValue(users, new TypeReference<List<User>>() {}); // to deserialzie generics on the runtime we use TypeReference.
+        loadUsers();
     }
 
     public Boolean loginUser(){
@@ -72,5 +81,15 @@ public class UserBookingService {
 
         System.out.println("No ticket found with id " + ticketId);
         return Boolean.FALSE;
+    }
+
+    public List<Train> getTrains(String src,String dest){
+        try {
+            TrainService trainService = new TrainService();
+            return trainService.searchTrains(src,dest);
+        }catch (IOException e){
+            System.out.println("Error occurred in getting trains");
+        }
+        return List.of();
     }
 }
